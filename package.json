@@ -1,0 +1,22 @@
+{
+  "name": "ti-lantec",
+  "version": "1.0.0",
+  "description": "for page ti lantec",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ramonvictorn/ti-lantec.git"
+  },
+  "author": "Ramon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ramonvictorn/ti-lantec/issues"
+  },
+  "homepage": "https://github.com/ramonvictorn/ti-lantec#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
