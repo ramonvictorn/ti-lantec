@@ -1,7 +1,11 @@
 {
   "name": "ti-lantec",
   "version": "1.0.0",
+<<<<<<< HEAD
   "description": "ti-lantec project",
+=======
+  "description": "for page ti lantec",
+>>>>>>> e0edb0373337371399731ef28eec8a7e70aae398
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,7 +14,11 @@
     "type": "git",
     "url": "git+https://github.com/ramonvictorn/ti-lantec.git"
   },
+<<<<<<< HEAD
   "author": "Ramon Victor",
+=======
+  "author": "Ramon",
+>>>>>>> e0edb0373337371399731ef28eec8a7e70aae398
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ramonvictorn/ti-lantec/issues"
