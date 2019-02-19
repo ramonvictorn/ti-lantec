@@ -5,7 +5,7 @@ const app = express()
 
 
 app.get('*',(req,res)=>{
-    res.send('system function on post 3006')
+    res.send('system function on post 3002')
 })
 
-app.listen(3006,()=>{console.log('Listen on 3006')})
+app.listen(3002,()=>{console.log('Listen on 3002')})
