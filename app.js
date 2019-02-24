@@ -11,4 +11,4 @@ app.use('/css', express.static(__dirname + '/src/web/css/'));
 app.get('/', (req,res)=>{
     res.sendFile(__dirname + '/src/web/index.html')
 })
-app.listen(3002,()=>{console.log('Listen on 3002')})
+app.listen(3001,()=>{console.log('Listen on 3001')})
