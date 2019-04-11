@@ -17,6 +17,10 @@
   },
   "homepage": "https://github.com/ramonvictorn/ti-lantec#readme",
   "dependencies": {
-    "express": "^4.16.4"
+    "@sendgrid/mail": "^6.3.1",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "nodemailer": "^6.1.0",
+    "request": "^2.88.0"
   }
 }
