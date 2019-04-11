@@ -19,7 +19,7 @@ function teste(){
             url: "/sendEmail",
             data: context,
             beforeSend: function() {
-              alert('Enviando solicitação...')
+              // alert('Enviando solicitação...')
               $('#solicitar').attr("disabled", true);
 
             },

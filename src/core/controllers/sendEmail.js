@@ -4,7 +4,9 @@ module.exports = sendEmail;
 function sendEmail(req,res){
     if(!verifyParams(req.body)) return res.status(400).send({error:'PARAMS_INVALIDS'})
     let context = req.body;
-    // console.log('Send Email controler ', req.body)
+    context.bodyEmail = `Sala: ${req.body.local} <br>
+        Solicitação: ${req.body.solicitacao}`;
+
     sendEmailModels(context,(ret)=>{
         if(ret.err){
             res.status(ret.err.code).send({error: ret.err.text})

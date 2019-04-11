@@ -37,13 +37,13 @@ function sendEmail(context,cb){
       from: `${context.name} <${context.email}>`,
       subject: context.subject,
       text: context.solicitacao,
-      html: `<strong>${context.solicitacao}</strong>`,
+      html: `<strong>${context.bodyEmail}</strong>`,
     };
     // sgMail.send(msg);
     sgMail
   .send(msg, (error, result) => {
     if (error) {
-      console.log('Erro on send Email');
+      console.log('Erro on send Email',error);
       ret.err = {
         code : 400,
         text: 'FAIL_ON_SEND_EMAIL'
