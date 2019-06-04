@@ -12,7 +12,7 @@
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script  src="js/main.js"></script>
+    
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
@@ -29,7 +29,8 @@
                 </div>
             <div class="form-group">
               <label for="local">Sala:</label>
-              <select class="form-control" id="local">
+              <select class="form-control" id="local" onchange="changeOnSelect(this);">
+                <option disabled selected value> -- Seleciona uma sala -- </option>
                 <option>Bloco A - 500 - Estúdio</option>
                 <option>Bloco A - 501 - Reunião</option>
                 <option>Bloco A - 502 - Administração</option>
@@ -37,9 +38,16 @@
                 <option>Bloco A - 504 - lab</option>
                 <option>Bloco D - 201</option>
               </select>
+              <div id="mesasDiv">
+                <label id='mesasLabel' for="mesas">Mesa:</label>
+                <select class="form-control" id="mesas">
+
+              </div>
+              
+              </select>
             </div>
             <div class="form-group">
-              <label for="subject">Assunto::</label>
+              <label for="subject">Assunto:</label>
               <input type="subject" class="form-control" id="subject" placeholder="Preciso de um fone">
           </div>
             <div class="form-group">
@@ -51,5 +59,6 @@
           <button type="button" class="btn btn-danger" onclick="cancel()">Cancelar</button>
         <!-- <iframe id="iframe" src='http://app.pipefy.com/public/form/HVlBQCw4?embedded=true' frameborder='0'></iframe> -->
     </div>
+    <script  src="js/main.js"></script>
 </body>
 </html>
