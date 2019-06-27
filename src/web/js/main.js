@@ -17,36 +17,53 @@ function teste(){
         subject,
     }
     // console.log('verifyData(context) ->', verifyData(context))
-    if(isEmail(context.email) && verifyData(context)){
-        $.ajax({
-            method: "POST",
-            url: "/sendEmail",
-            data: context,
-            beforeSend: function() {
-              // alert('Enviando solicitação...')
-              $('#solicitar').attr("disabled", true);
-
-            },
-            complete: function(returned) {
-              // console.log('returnet ', returned)
-              if(returned.status == 400){
-                alert('Ocorreu um erro, por favor envie um email para ti.lantec@gmail.com informando sua solicitação')
-              }else{
-                alert('Solicitação enviada com sucesso, verifique seu email para confirmar.')
-                cancel()
-              }
-          },
-          })
-    }else{
-      alert('Insira os dados corretamente!')
+    if(!isEmail(context.email)){
+      // console.log('email invalido');
+      openModal('Atenção', 'Por favor, preencha com um email gmail válido.');
+      // invalid
+      return;
     }
+    if(!verifyData(context)){
+      // console.log('data invalidos');
+      openModal('Atenção', 'Por favor, preencha todos os campos para criar sua solicitação.');
+      // invalid
+      return;
+    }
+    loadingModalStart();
+    $.ajax({
+      method: "POST",
+      url: "/sendEmail",
+      data: context,
+      beforeSend: function() {
+        // alert('Enviando solicitação...')
+        $('#solicitar').attr("disabled", true);
+
+      },
+      complete: function(returned) {
+        // console.log('returnet ', returned)
+        if(returned.status == 400){
+          // alert('Ocorreu um erro, por favor envie um email para ti.lantec@gmail.com informando sua solicitação');
+          $( "#loadGif" ).remove();
+          ModalAfterRequest('Ocorreu um erro...',"Envie um email diretamente para ti.lantec@gmail.com");
+        }else{
+          $( "#loadGif" ).remove();
+          ModalAfterRequest('Solicitação criada',"Verifique se recebeu um email com a confirmação da criação.")
+          // alert('Solicitação enviada com sucesso, verifique seu email para confirmar.')
+          cancel()
+        }
+      },
+    })
+      
+    
+    
     
 }
 
 function isEmail(email) {
   var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
   // console.log('isEmail - > ',regex.test(email))
-  return regex.test(email);
+  var regerGmail = /(\W|^)[\w.+\-]*@gmail\.com(\W|$)/;
+  return (regex.test(email) && regerGmail.test(email));
 }
 
 function verifyData(context){
@@ -104,3 +121,43 @@ function changeOnSelect(value){
       $('#mesasDiv').show()
   }
 }
+
+function loadingModalStart(){
+  // console.log('loading modal start');
+  var title = $('#modalTitle').text('Enviando solicitação...');
+  var bodyModal = $('#modalBody').append('<img id="loadGif" src="http://arquivos.lantec.ufsc.br/Ti/assets/loadingSpinner.gif">');
+  $('#modal').css('opacity',1);
+  $('#modal').show();
+}
+function ModalAfterRequest(title,msgBody){
+  // console.log('loading modal ModalAfterRequest');
+  var title = $('#modalTitle').text(title);
+  var bodyModal = $('#modalBody').append(`<h3>${msgBody}</h3>`);
+}
+
+
+function openModal(title,textBody){
+  // console.log('open modal', title);
+  var title = $('#modalTitle').text(title);
+  var bodyModal = $('#modalBody').text(textBody);
+  $('#modal').css('opacity',1);
+  $('#modal').show()
+};
+
+function closeModal(){
+  $('#modal').css('opacity',0);
+  $('#modal').hide();
+  var title = $('#modalTitle').text('');
+  var bodyModal = $('#modalBody').text('');
+  $('#loadGif').remove();
+}
+
+$(document).ready(function() {
+  // console.log('doc ready');
+  $(document).click(function(event) {
+    // console.log("click vent",$(event.target).closest('#modal').length);
+    if($(event.target).closest('#modal').length){
+      closeModal();
+    }
+  });
+});
