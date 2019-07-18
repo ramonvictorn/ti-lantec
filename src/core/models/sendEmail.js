@@ -33,7 +33,7 @@ function sendEmail(context,cb){
 
     sgMail.setApiKey(SENDGRID_API_KEY);
     const msg = {
-      to: 'ti.lantec@gmail.com',
+      to: ['ti.lantec@gmail.com','ramon.lantec@gmail.com', 'carolinesuportelantec@gmail.com'],
       from: `${context.name} <${context.email}>`,
       subject: context.subject,
       text: context.solicitacao,
