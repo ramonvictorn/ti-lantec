@@ -13,7 +13,7 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json())
 app.get('/', (req,res)=>{
-    res.sendFile(__dirname + '/src/web/index.html')
+    res.sendFile(__dirname + '/src/web/noService.html')
 })
 
 
