@@ -16,6 +16,10 @@ app.get('/', (req,res)=>{
     res.sendFile(__dirname + '/src/web/index.html')
 })
 
+app.get('/emprestimos',(req,res)=>{
+    res.sendFile(__dirname+ '/src/web/emprestimos.html')
+})
+
 
 const sendEmailController = require('./src/core/controllers/sendEmail.js')
 app.post('/sendEmail', (req,res)=>{
